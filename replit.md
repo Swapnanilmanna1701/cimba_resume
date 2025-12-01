@@ -1,69 +1,74 @@
 # AI Resume Reviewer
 
-## Overview
-An AI-powered web application that helps users optimize their resumes for specific job descriptions. The application analyzes resumes against job requirements and provides a match score along with actionable improvement suggestions.
-
-## Tech Stack
-- **Frontend**: React 18 with Vite, Tailwind CSS
-- **Backend**: Java Spring Boot 3.x
-- **Database**: PostgreSQL
-- **AI**: Google Gemini AI API
-
-## Project Structure
-```
-/
-├── backend/                 # Spring Boot backend
-│   ├── src/
-│   │   └── main/
-│   │       ├── java/com/resumereviewer/
-│   │       │   ├── controller/    # REST API endpoints
-│   │       │   ├── service/       # Business logic & AI integration
-│   │       │   ├── repository/    # Database access
-│   │       │   ├── model/         # JPA entities
-│   │       │   ├── dto/           # Data transfer objects
-│   │       │   └── config/        # Configuration classes
-│   │       └── resources/
-│   │           └── application.properties
-│   └── pom.xml
-├── frontend/               # React frontend
-│   ├── src/
-│   │   ├── components/    # Reusable UI components
-│   │   ├── pages/         # Page components
-│   │   ├── services/      # API service layer
-│   │   └── App.jsx
-│   ├── package.json
-│   └── vite.config.js
-└── replit.md
-```
-
-## Features
-1. **Resume Upload**: Upload PDF or text resumes
-2. **Job Description Input**: Paste job descriptions for comparison
-3. **AI Analysis**: Gemini AI analyzes resume against job requirements
-4. **Match Score**: 0-100% match score with visual indicator
-5. **Improvement Suggestions**: Three actionable suggestions per analysis
-6. **Download Reports**: Export analysis as PDF
-7. **History**: View past analyses
-
-## API Endpoints
-- `POST /api/analyze` - Analyze resume against job description
-- `GET /api/analyses` - Get all past analyses
-- `GET /api/analyses/{id}` - Get specific analysis
-- `GET /api/health` - Health check
-
-## Environment Variables
-- `DATABASE_URL` - PostgreSQL connection string (auto-configured)
-- `GEMINI_API_KEY` - Google Gemini AI API key (required)
+This is a full-stack application that uses Gemini AI to review resumes and provide feedback.
 
 ## Running the Application
-The application runs two services:
-1. Backend: Spring Boot on port 8080
-2. Frontend: Vite dev server on port 5000 (proxies /api to backend)
 
-## Recent Changes
-- Initial project setup (November 2025)
-- React frontend with Tailwind CSS
-- Spring Boot backend with Gemini AI integration
-- PDF parsing with Apache PDFBox
-- PostgreSQL database integration
-- Updated Gemini model to gemini-2.0-flash for API compatibility (November 2025)
+To run this application, you will need to have the following installed:
+
+- Java 17 or higher
+- Maven
+- Node.js and npm
+- A PostgreSQL database
+
+### Backend Setup
+
+1.  **Navigate to the backend directory:**
+
+    ```bash
+    cd backend
+    ```
+
+2.  **Set Environment Variables:**
+
+    Create a `.env` file in the `backend` directory and add the following environment variables:
+
+    ```bash
+    PGHOST=your_database_host
+    PGPORT=your_database_port
+    PGDATABASE=your_database_name
+    PGUSER=your_database_username
+    PGPASSWORD=your_database_password
+    GEMINI_API_KEY=your_gemini_api_key
+    ```
+
+    Replace the placeholder values with your actual database credentials and Gemini API key.
+
+3.  **Run the Spring Boot Application:**
+
+    You can run the application using the following Maven command:
+
+    ```bash
+    mvn spring-boot:run
+    ```
+
+    The backend server will start on port `8080`.
+
+### Frontend Setup
+
+1.  **Navigate to the frontend directory:**
+
+    ```bash
+    cd frontend
+    ```
+
+2.  **Install Dependencies:**
+
+    ```bash
+    npm install
+    ```
+
+3.  **Run the Development Server:**
+
+    ```bash
+    npm run dev
+    ```
+
+    The frontend development server will start on port `5173`.
+
+## API Endpoints
+
+-   `POST /api/analyze`: Upload a resume and job description for analysis.
+-   `GET /api/analyses`: Get a list of all resume analyses.
+-   `GET /api/analyses/{id}`: Get a specific resume analysis by ID.
+-   `GET /api/health`: Health check endpoint.
