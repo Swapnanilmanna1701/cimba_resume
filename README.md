@@ -113,6 +113,13 @@ npm install
 ```bash
 cd backend
 mvn spring-boot:run -Dspring-boot.run.jvmArguments="-Dserver.port=8080"
+mvn spring-boot:run (if previous  is not working/ after set $env:PGHOST="localhost"
+$env:PGPORT="5432"
+$env:PGDATABASE="resume"
+$env:PGUSER="postgres"
+$env:PGPASSWORD="postgres"
+$env:GEMINI_API_KEY="your-gemini-api-key-here"
+to the  powershell)
 ```
 
 The backend will start on `http://localhost:8080`
